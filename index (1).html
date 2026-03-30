@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdelkarim Laglil Herradi — PhD Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F2EA;
+      --ink: #1C1A17;
+      --ink-muted: #5A5650;
+      --ink-faint: #9C9890;
+      --rule: #D6D2C8;
+      --accent: #2D4A6B;
+      --accent-light: #E8EFF6;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink-muted);
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* LAYOUT */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2.5rem;
+    }
+
+    /* HERO */
+    #about { padding-top: 6rem; }
+    .hero-name {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+    .hero-bio {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--ink);
+      max-width: 640px;
+      margin-bottom: 2rem;
+    }
+    .hero-bio strong {
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .hero-links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 2rem; }
+    .btn {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--ink); color: var(--cream); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1e3552; border-color: #1e3552; color: #fff; }
+
+    /* RESEARCH LINES */
+    .research-lines { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 0.5rem; }
+    .research-card {
+      background: #EDEAE0;
+      padding: 2rem 1.75rem;
+    }
+    .research-card h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .research-card p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+    .research-tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    /* PUBLICATIONS */
+    .pub-list { list-style: none; }
+    .pub-item {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .pub-year {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      padding-top: 0.2rem;
+    }
+    .pub-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+    .pub-meta {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--ink-muted);
+    }
+    .pub-status {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* CONFERENCES */
+    .conf-list { list-style: none; }
+    .conf-item {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.5rem;
+    }
+    .conf-year {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      padding-top: 0.15rem;
+    }
+    .conf-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.2rem; line-height: 1.4; }
+    .conf-meta { font-size: 0.9rem; font-style: italic; color: var(--ink-muted); }
+
+    /* CV */
+    .cv-block { max-width: 560px; }
+    .cv-block p {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    .cv-entries { list-style: none; margin-bottom: 2.5rem; }
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .cv-period {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      padding-top: 0.1rem;
+    }
+    .cv-detail strong { font-weight: 500; }
+    .cv-detail span { display: block; font-size: 0.88rem; font-style: italic; color: var(--ink-muted); margin-top: 0.1rem; }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 0.5rem;
+    }
+    .contact-item h4 {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.5rem;
+    }
+    .contact-item p, .contact-item a {
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+    .contact-item a:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 0;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 640px) {
+      .research-lines { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .pub-item, .conf-item, .cv-entry { grid-template-columns: 1fr; gap: 0.25rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Abdelkarim Laglil Herradi</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#conferences">Conferences</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <p class="section-label">About</p>
+        <h1 class="hero-name">Abdelkarim<br><em>Laglil Herradi</em></h1>
+        <p class="hero-title">PhD Researcher · Universidad Carlos III de Madrid</p>
+        <p class="hero-bio">
+          I am a PhD researcher in the Social Sciences at <strong>Universidad Carlos III de Madrid (UC3M)</strong>, where my work sits at the intersection of political sociology, discourse analysis, and international political economy. My research focuses on <strong>migration and anti-immigration rhetorics and politics in Europe</strong>, examining how populist and nativist discourses are constructed, mobilized, and institutionalized across different national contexts.
+        </p>
+        <p class="hero-bio">
+          As a secondary line of inquiry, I am cultivating a growing interest in the <strong>international political economy of remittances in the Global South</strong> — exploring how financial flows from migrant workers shape development trajectories, household strategies, and state-society relations.
+        </p>
+        <div class="hero-links">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="#cv" class="btn">Curriculum Vitae</a>
+          <a href="#publications" class="btn">Publications</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <div class="container">
+        <p class="section-label">Research</p>
+        <div class="research-lines">
+          <div class="research-card">
+            <span class="research-tag">Primary Line</span>
+            <h3>Migration & Anti-Immigration Politics in Europe</h3>
+            <p>I investigate the discursive and political dynamics driving anti-immigration sentiment in Europe — from far-right party platforms to mainstream policy convergence, and the rhetorical frames that make exclusionary politics legible and appealing across different publics.</p>
+          </div>
+          <div class="research-card">
+            <span class="research-tag">Secondary Line</span>
+            <h3>IPE of Remittances in the Global South</h3>
+            <p>This emerging line of research interrogates remittances not merely as economic transfers but as political and developmental phenomena — examining their relationship to dependency, state capacity, financialization, and transnational household governance in sending countries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="container">
+        <p class="section-label">Publications</p>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <span class="pub-year">2025</span>
+            <div>
+              <p class="pub-title">Working papers & manuscripts under review <span class="pub-status">In progress</span></p>
+              <p class="pub-meta">Details available upon request · Contact me directly</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONFERENCES -->
+    <section id="conferences">
+      <div class="container">
+        <p class="section-label">Conferences & Presentations</p>
+        <ul class="conf-list">
+          <li class="conf-item">
+            <span class="conf-year">2024–present</span>
+            <div>
+              <p class="conf-title">Co-organizer, PAPERSS Seminar Series</p>
+              <p class="conf-meta">Pre- and Post-doctoral Empirical Research in Social Sciences · UC3M, Madrid</p>
+            </div>
+          </li>
+        </ul>
+        <p style="font-size: 0.88rem; color: var(--ink-faint); font-family: var(--sans); margin-top: 1.5rem;">
+          Conference presentations to be added as they take place.
+        </p>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+      <div class="container">
+        <p class="section-label">Curriculum Vitae</p>
+        <div class="cv-block">
+          <p>A full PDF of my CV is available upon request. Selected positions and training are listed below.</p>
+
+          <h3 style="font-size: 1rem; font-family: var(--sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem;">Education</h3>
+          <ul class="cv-entries">
+            <li class="cv-entry">
+              <span class="cv-period">2024 – present</span>
+              <div class="cv-detail">
+                <strong>PhD in Social Sciences</strong>
+                <span>Universidad Carlos III de Madrid</span>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <span class="cv-period">2022 – 2024</span>
+              <div class="cv-detail">
+                <strong>Master in Social Sciences</strong>
+                <span>Carlos III–Juan March Institute (IC3JM) · UC3M, Madrid</span>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <span class="cv-period">2018 – 2022</span>
+              <div class="cv-detail">
+                <strong>Bachelor in International Studies</strong>
+                <span>Universidad Carlos III de Madrid</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 style="font-size: 1rem; font-family: var(--sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; margin-top: 1.5rem;">Teaching</h3>
+          <ul class="cv-entries">
+            <li class="cv-entry">
+              <span class="cv-period">Sep. 2025 – present</span>
+              <div class="cv-detail">
+                <strong>Teaching Assistant · Topics in Comparative Politics</strong>
+                <span>Universidad Carlos III de Madrid</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 style="font-size: 1rem; font-family: var(--sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; margin-top: 1.5rem;">Research Experience</h3>
+          <ul class="cv-entries">
+            <li class="cv-entry">
+              <span class="cv-period">Apr. 2024 – Jul. 2025</span>
+              <div class="cv-detail">
+                <strong>Research Assistant · Transitional Justice Project</strong>
+                <span>Spanish Ministry-funded project "Dynamics and Consequences of Transitional Justice at the Local Level" (205-MD-2023) · PI: Francisco Villamil (UC3M–IJL) · Led data collection on mass graves across Spain; built databases for econometric analysis; co-authored research outputs with contributions to theoretical framing of transitional justice mechanisms.</span>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <span class="cv-period">Jan. 2024 – Apr. 2024</span>
+              <div class="cv-detail">
+                <strong>Research Assistant · Economic History Project</strong>
+                <span>AEI-funded project "Integration histories of peripheral Latin capitalisms" · PI: Antonio Tena Junguito (UC3M) · In collaboration with the Figuerola Institute of History and Social Sciences · Archival research; processed colonial economic data using OCR technologies; standardized historical monetary currencies; database creation and management.</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 style="font-size: 1rem; font-family: var(--sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; margin-top: 1.5rem;">Service & Organisation</h3>
+          <ul class="cv-entries">
+            <li class="cv-entry">
+              <span class="cv-period">2024 – present</span>
+              <div class="cv-detail">
+                <strong>Co-organizer · PAPERSS Seminar Series</strong>
+                <span>Pre- and Post-doctoral Empirical Research in Social Sciences · PhD student-run seminar series at UC3M providing a platform for early scholars to present work in Political Science and Sociology.</span>
+              </div>
+            </li>
+          </ul>
+
+          <a href="mailto:alaglil@pa.uc3m.es" class="btn" style="margin-top: 1rem; display: inline-block;">Request Full CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <p class="section-label">Contact</p>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h4>Email</h4>
+            <a href="mailto:alaglil@pa.uc3m.es">alaglil@pa.uc3m.es</a>
+          </div>
+          <div class="contact-item">
+            <h4>Office</h4>
+            <p>Room 18.2E22 · Facultad de Ciencias Sociales y Jurídicas<br>Campus de Getafe · Universidad Carlos III de Madrid<br>Madrid, Spain</p>
+          </div>
+          <div class="contact-item">
+            <h4>Academic Profiles</h4>
+            <p>
+              <a href="https://orcid.org/" target="_blank" rel="noopener">ORCID</a> ·
+              <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+            </p>
+          </div>
+          <div class="contact-item">
+            <h4>Connect</h4>
+            <p><a href="https://www.linkedin.com/in/abdelkarim-laglil-herradi-39419622a/" target="_blank" rel="noopener">LinkedIn</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div cl
